@@ -8,7 +8,7 @@
 from sys         import argv
 from math        import pi, sin, cos, atan, atan2, sqrt, copysign, degrees, radians, modf
 from collections import namedtuple
-from time        import sleep, clock
+from time        import sleep, perf_counter as clock
 
 
 ###################################################################################################
@@ -21,7 +21,7 @@ from scipy.integrate import ode
 ###################################################################################################
 # Load simulation parameters
 sim_params = open('sim_params_config.yaml')
-param_dict = yaml.load(sim_params)
+param_dict = yaml.load(sim_params, Loader=yaml.FullLoader)
 
 # Boat
 BOAT_LENGTH                       = param_dict['boat']['length']

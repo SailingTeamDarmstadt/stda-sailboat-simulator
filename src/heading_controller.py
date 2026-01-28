@@ -4,7 +4,7 @@ from scipy.linalg import solve_continuous_are
 
 import yaml
 sim_params = open('sim_params_config.yaml')
-param_dict = yaml.load(sim_params)
+param_dict = yaml.load(sim_params, Loader=yaml.FullLoader)
 
 DISTANCE_COG_RUDDER = param_dict['boat']['distance_cog_rudder']
 MOI_Z               = param_dict['boat']['moi_z']
@@ -88,7 +88,7 @@ class heading_controller(object):
             self.KP = K[0]
             self.KD = K[1]
             self.KI = -K[2]
-        print K
+        print(K)
         
         return list(K)
     

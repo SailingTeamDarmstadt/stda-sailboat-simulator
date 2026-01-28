@@ -4,7 +4,7 @@ from simulation import *
 from numpy import *
 import matplotlib.pyplot as plt
 from sail_angle import sail_angle
-from time import clock
+from time import perf_counter as clock
 
 deq = solve
 
@@ -341,7 +341,7 @@ def simulate(N_steps, x, t, r, sail, environment, controller, integrator, sample
         t[i+1] = integrator.t
         x[:, i+1] = integrator.y
         #print 'time', t[i]
-    print 'computation time', clock()-t1
+    print('computation time', clock()-t1)
     # forces
     sail_force = np.zeros((2, x.shape[1]))
     keel = np.zeros((2, x.shape[1]))
